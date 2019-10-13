@@ -1,4 +1,7 @@
 <?php
+    header("Access-Control-Allow-Origin: *");
+    header("Content-Type: application/json; charset=UTF-8");
+
     $connection = @new mysqli('localhost','id11175903_iotproject','iotproject','id11175903_iotproject');
 
     $DBdata = array();
@@ -10,8 +13,6 @@
     }
     else
     {
-        echo("Connection succesful!");
-
         $sql = "SELECT ID,deviceID,ntuValue,timestamp FROM ntuTable";  
         $result = $connection->query($sql);
 
@@ -21,15 +22,14 @@
             {
                 $DBdata[] = $row;
             }
-            echo json_encode($DBdata);
             print json_encode($DBdata);
-            echo("Data added to JSON format!");
+
+            $result->close();
+            $connection->close();
         }
         else
         {
             echo("No data in database!");
         }
-
-        $connection->close();
     }
 ?>
