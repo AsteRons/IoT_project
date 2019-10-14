@@ -21,7 +21,7 @@ public class SensorDataServiceImpl implements SensorDataService{
 
     @Override
     public List<SensorData> findAll() {
-        return sensorDataRepository.findAllByOrderByLastNameAsc();
+        return sensorDataRepository.findAllByOrderByDeviceIDAsc();
     }
 
     @Override

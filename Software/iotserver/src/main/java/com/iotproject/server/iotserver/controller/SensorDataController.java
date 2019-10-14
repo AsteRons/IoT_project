@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.iotproject.server.iotserver.service.SensorDataService;
 
 @Controller
-@RequestMapping("/employees")
+@RequestMapping("/sensorData")
 public class SensorDataController {
 
     private SensorDataService sensorDataService;
