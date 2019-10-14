@@ -1,1 +1,0 @@
-#1 - wgrany skrypt odczytujący wartość z czujnika SEN0189 i przeliczający ją na jednostkę NTU.
