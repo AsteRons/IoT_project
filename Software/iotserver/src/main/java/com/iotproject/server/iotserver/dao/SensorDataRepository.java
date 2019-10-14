@@ -3,7 +3,7 @@ package com.iotproject.server.iotserver.dao;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.iotproject.server.iotserver.entity.SensorData;
+import com.iotproject.server.iotserver.model.SensorData;
 
 public interface SensorDataRepository  extends JpaRepository<SensorData, Integer>{
 

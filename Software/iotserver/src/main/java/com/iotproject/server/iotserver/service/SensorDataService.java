@@ -1,7 +1,7 @@
 package com.iotproject.server.iotserver.service;
 
 import java.util.List;
-import com.iotproject.server.iotserver.entity.SensorData;
+import com.iotproject.server.iotserver.model.SensorData;
 
 public interface SensorDataService {
 

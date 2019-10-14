@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.iotproject.server.iotserver.dao.SensorDataRepository;
-import com.iotproject.server.iotserver.entity.SensorData;
+import com.iotproject.server.iotserver.model.SensorData;
 
 @Service
 public class SensorDataServiceImpl implements SensorDataService{

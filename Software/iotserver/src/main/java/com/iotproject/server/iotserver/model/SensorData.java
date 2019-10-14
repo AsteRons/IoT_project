@@ -1,4 +1,4 @@
-package com.iotproject.server.iotserver.entity;
+package com.iotproject.server.iotserver.model;
 
 import java.util.Date;
 import javax.persistence.Column;
