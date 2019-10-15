@@ -1,0 +1,3 @@
+Oprogramowanie:
+
+* iotserver - server aplikacji
