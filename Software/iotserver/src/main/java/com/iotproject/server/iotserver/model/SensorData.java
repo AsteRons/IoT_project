@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="sensorData")
+@Table(name="sensordata")
 public class SensorData {
 
     // define fields
@@ -19,10 +19,10 @@ public class SensorData {
     private int id;
 
     @Column(name="deviceID")
-    private int deviceID;
+    public int deviceID;
 
-    @Column(name="ntuValue")
-    private String ntuValue;
+    @Column(name="ntuvalue")
+    private int ntuValue;
 
     @Column(name="timestamp")
     private Date timestamp;
@@ -33,14 +33,14 @@ public class SensorData {
     public SensorData(){
 
     }
-    public SensorData(int id, int deviceID, String ntuValue, Date timestamp){
+    public SensorData(int id, int deviceID, int ntuValue, Date timestamp){
         this.id = id;
         this.deviceID = deviceID;
         this.ntuValue = ntuValue;
         this.timestamp = (Date)timestamp.clone();
     }
 
-    public SensorData(int deviceID, String ntuValue, Date timestamp){
+    public SensorData(int deviceID, int ntuValue, Date timestamp){
         this.deviceID = deviceID;
         this.ntuValue = ntuValue;
         this.timestamp = (Date)timestamp.clone();
@@ -62,11 +62,11 @@ public class SensorData {
         this.deviceID = deviceID;
     }
 
-    public String getNtuValue() {
+    public int getNtuValue() {
         return ntuValue;
     }
 
-    public void setNtuValue(String ntuValue) {
+    public void setNtuValue(int ntuValue) {
         this.ntuValue = ntuValue;
     }
 

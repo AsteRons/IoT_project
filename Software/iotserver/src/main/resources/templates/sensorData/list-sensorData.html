@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8"/>
+        <title>Projekt IoT</title>
+        <meta name="description" content="Projekt Internet of Things"/>
+        <meta name="keywords" content="IoT"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta name="author" content="Kruczek"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            #container
+            {
+                width: 1000px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            #logo
+            {
+                background-color: darkgray;
+                text-align: center;
+                padding: 15px;
+            }
+            #nav
+            {
+                float: left;
+                background-color: darkslategrey;
+                width: 120px;
+                min-height: 620px;
+                padding: 10px;
+            }
+            #content
+            {
+                float: left;
+                padding: 20px;
+                width: 600px;
+            }
+            #footer
+            {
+                clear:both;
+                background-color: black;
+                color: white;
+                text-align: center;
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+
+    <div id="nav">
+        <form>
+            <button type="submit" formaction="/sensorData/graphSensorData_1">
+                Wykres
+            </button>
+        </form>
+    </div>
+
+    <div id="container">
+        <div id="logo">
+            <h1>Projekt IoT!</h1>
+        </div>
+
+            <div class="container">
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+
+                    <tr>
+                        <th>ID</th>
+                        <th>deviceID</th>
+                        <th>ntuValue</th>
+                        <th>timestamp</th>
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    <tr th:each="tempSensorData : ${sensorData}">
+                        <td th:text="${tempSensorData.id}" />
+                        <td th:text="${tempSensorData.deviceID}" />
+                        <td th:text="${tempSensorData.ntuValue}" />
+                        <td th:text="${tempSensorData.timestamp}" />
+                    </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+
+            <div id="footer">
+                    Wykonali:<br/>
+                    -Marcin Jurczak<br/>
+                    -Mateusz Kruczek<br/>
+                    -Maciej Rudnik<br/>
+                    -Kamil Wojtas<br/>
+            </div>
+        </div>
+
+
+    </body>
+</html>
