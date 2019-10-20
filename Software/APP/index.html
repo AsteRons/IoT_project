@@ -8,6 +8,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <meta name="author" content="Kruczek"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+        <script src="https://momentjs.com/downloads/moment.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <style>
             #container
@@ -58,29 +60,65 @@
 
             <div id="content">
                 <h2>Wykres</h2>
-                <canvas id="chart"></canvas>
+                <canvas id="chart" width="500" height="900"></canvas>
             </div>
 
             <script>
                 const data_url = 'https://iotprojectteam.000webhostapp.com/dataDBtoJSON.php'
-                async function getData(){
+                const value = [];
+                const time = [ "2019-10-14 12:36:34", "2019-10-14 12:56:43", "2019-10-14 12:58:05" ];
+                var time2 = [];
+                var timeFormat = 'YYYY-MM-DD HH:mm:ss';
+                var ctx = document.getElementById('chart').getContext('2d');
+                
+                /*async function getData(){
                     const response = await fetch(data_url);
                     const data = await response.json();
-                    console.log(data);
-                }
-                getData();
-                let ctx = document.getElementById('chart').getContext('2d');
-
-                let MyChart = new Chart(ctx, {
-                    type:'line',
-                    data: {
-                        labels: ['2019-10-11 21:28:51', '2019-10-11 21:28:54', '2019-10-11 21:28:56', '2019-10-11 21:28:58'],
-                        datasets:[{
-                            data:[1,22,33,55]
-                        }]
+                    for(var i = 0; i<data.length; i++)
+                    {
+                        value.push(data[i].ntuValue)
+                        time2.push(data[i].timestamp)
                     }
-                })
+                }
+                getData();*/
+
+                $.ajax({
+                    url: data_url,
+                    method: "GET",
+                    success: function(data) 
+                    {
+                        console.log(data);
                 
+                        for(var i in data)
+                        {
+                            value.push(data[i].ntuValue);
+                            time2.push(data[i].timestamp);                  
+                        }
+                
+                //console.log(time);
+                //console.log(time2);
+                        console.log(value);
+                        let MyChart = new Chart(ctx, {
+                            type:'line',
+                            data: {
+                                labels: time2,//[ "2019-10-14 12:36:34", "2019-10-14 12:56:43", "2019-10-14 12:58:05" ],
+                                datasets:[{
+                                    data: value,//[ 45, 48, 48 ]
+                                }]
+                            },
+                        /* options: {
+                                scales: {
+                                    xAxes: [{
+                                        type: 'time',
+                                        time: {
+                                            parser: timeFormat,              
+                                        }
+                                    }]
+                                }
+                                }*/
+                        })
+                    }
+            });
             </script>
 
 
