@@ -46,8 +46,8 @@ void loop() {
   Serial.println("");
 
   // Tutaj odbywa sie cala procedura przypisania ID czujnika, odczytu z niego oraz wyslanie danych poprzez aktywacje skryptu
-  String ntuValue = "222";
-  String php = "/addToDB.php?deviceID="+deviceID+"&ntuValue="+ntuValue;
+  String ntuValue = "321";
+  String php = "/NewServer/addToDB.php?deviceID="+deviceID+"&ntuValue="+ntuValue;
 
   https.print(String("POST ") + php + " HTTP/1.1\r\n" +
                "Host: " + host + "\r\n" +
