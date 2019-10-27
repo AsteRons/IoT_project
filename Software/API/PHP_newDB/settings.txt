@@ -1,0 +1,4 @@
+Skrypty umieszczone w (tym) folderze - PHP_newDB zapewniają pełną obsługę nowej bazy danych. Jest ona zintegrowana z serwerem,
+na którym znajduje się strona internetowa.
+
+Wszelkie pytania, problemy i wątpliwości kierować do mnie @MarcinJ7.
