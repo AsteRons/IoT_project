@@ -4,18 +4,16 @@ import com.iotproject.server.iotserver.service.SensorDataService;
 import com.iotproject.server.iotserver.model.SensorData;
 
 import java.util.Date;
-import java.util.LinkedHashMap;
+import java.util.TreeMap;
 import java.util.List;
 import java.util.Map;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 
 
 @Controller
@@ -32,7 +30,7 @@ public class SensorDataController {
 
     // add mapping for "/list"
 
-    @GetMapping("/list")
+    @RequestMapping("/list")
     public String listSensorData(Model theModel){
 
         List<SensorData> theSensorData = sensorDataService.findAll();
@@ -45,7 +43,7 @@ public class SensorDataController {
     public String graphSensorData(Model theModel){
 
         List<SensorData> theSensorData = sensorDataService.findAll();
-        Map<Date, Integer> sensorDataMaps = new LinkedHashMap<>();
+        Map<Date, Integer> sensorDataMaps = new TreeMap<>();
 
         for(SensorData sensorDataMap : theSensorData)
         {
@@ -55,6 +53,12 @@ public class SensorDataController {
         theModel.addAttribute("sensorDataMaps", sensorDataMaps);
 
         return "sensorData/graph-sensorData";
+    }
+    @GetMapping("/showMyLoginPage")
+    public String showMyLoginPage() {
+
+        return "sensorData/plain-login";
+
     }
 
 }
