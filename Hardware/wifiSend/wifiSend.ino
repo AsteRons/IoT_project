@@ -2,14 +2,14 @@
 #include <WiFiClientSecure.h>
 #include <Wire.h> 
 
-const char *ssid = "**********";            // Nazwa sieci Wi-Fi, do ktorej nastapi polaczenie
-const char *password = "************";      // Haslo do niej
+const char *ssid = "*****";            // Nazwa sieci Wi-Fi, do ktorej nastapi polaczenie
+const char *password = "*******";      // Haslo do niej
  
 const char *host = "iotprojectteam.000webhostapp.com";  // serwer
 const int httpsPort = 443;                              // serwer na https, port 443           
 const char fingerprint[] = "5B FB D1 D4 49 D3 0F A9 C6 40 03 34 BA E0 24 05 AA D2 E2 01"; // fingerprint SHA-1 strony
 
-const int ntuValueReceived = 0;  // inicjalizacja odczytu z czujnika
+int ntuValueReceived = 0;  // inicjalizacja odczytu z czujnika
 String deviceID = "1";           // device ID (numer czujnika)
 int sendDelay = 30;              // co ile dane beda wysylane w sekundach
 
