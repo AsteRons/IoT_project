@@ -39,11 +39,12 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/sensorData/list") // Submit URL
                     .loginPage("/sensorData/showMyLoginPage")
                     .defaultSuccessUrl("/sensorData/list", true)
-
-                    .permitAll()
                 .and()
                 .logout()
-                .permitAll();
+                .logoutSuccessUrl("/sensorData/showMyLoginPage")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID");
+
 
 
     }
