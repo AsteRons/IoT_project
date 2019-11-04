@@ -21,14 +21,22 @@ void loop() // odczyt danych z czujnika oraz przeliczenie napieca na jednostke N
 {
   float voltage = 0;
   int sensorValue = analogRead(A0);
-  voltage = sensorValue * (5.0 / 1024.0);
+  for(int i=0; i<500; i++) // 'odszumienie' odczytow - srednia z 500 odczytow
+  {
+        voltage += ((float)analogRead(A0)/1023)*5;
+  }
+  voltage = voltage/500;
   if(voltage<2.5) // zgodnie z danymi producenta
   {
     ntuValue=3000;
   }
+  else if(voltage>4.2) // zapobieganie powstawania wartosci ujemnych
+  {
+    ntuValue=0;
+  }
   else
   {
-    ntuValue=-1120.4*voltage*voltage+5742.3*voltage-4352.9; // zgodnie z danymi producenta
+    ntuValue=-1120.4*square(voltage)+5742.3*voltage-4353.8; // zgodnie z danymi producenta
   }  
   ntuValue = (int)ntuValue;
   Serial.println(ntuValue);
