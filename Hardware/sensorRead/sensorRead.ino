@@ -1,5 +1,8 @@
 #include <Wire.h>
 
+#define   ANALOG_PIN  A0   // wybor pinu, do ktorego wpiety jest czujnik
+#define   READ_DELAY  1000 // co ile zbierany jest odczyt z czujnika
+
 int ntuValue = 0;
 
 void requestEvent() // zdarzenie wysylane przez ESP, powodujace wysyl danych z Arduino
@@ -20,10 +23,10 @@ void setup()
 void loop() // odczyt danych z czujnika oraz przeliczenie napieca na jednostke NTU (nephelometric turbidity units)
 {
   float voltage = 0;
-  int sensorValue = analogRead(A0);
+  int sensorValue = analogRead(ANALOG_PIN);
   for(int i=0; i<500; i++) // 'odszumienie' odczytow - srednia z 500 odczytow
   {
-        voltage += ((float)analogRead(A0)/1023)*5;
+        voltage += ((float)analogRead(ANALOG_PIN)/1023)*5;
   }
   voltage = voltage/500;
   if(voltage<2.5) // zgodnie z danymi producenta
@@ -40,5 +43,5 @@ void loop() // odczyt danych z czujnika oraz przeliczenie napieca na jednostke N
   }  
   ntuValue = (int)ntuValue;
   Serial.println(ntuValue);
-  delay(1000);
+  delay(READ_DELAY);
 }
