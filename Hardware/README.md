@@ -16,7 +16,7 @@ Arduino -----  ESP
 
   A4  ------    D1
 
-ESP D0 - RST zwarte 
+ESP D0 - RST zwarte (na czas flashowania ESP rozewrzeć, ewentualnie po flashu manualnie zresetować ESP)
 
 
 
