@@ -27,15 +27,16 @@
             {
                 float: left;
                 background-color: darkslategrey;
-                width: 120px;
+                color: white;
+                width: 140px;
                 min-height: 620px;
                 padding: 10px;
             }
             #content
             {
                 float: left;
-                padding: 20px;
-                width: 600px;
+                padding: 10px;
+                width: 700px;
             }
             #footer
             {
@@ -51,11 +52,13 @@
 
     <div id="nav">
         <form>
+            Czujnik mętności wody SEN0189<br/>
             <button type="submit" formaction="/sensorData/graphSensorData_1">
                 Wykres
             </button>
         </form>
-
+        <br/>
+        <br/>
         <form name="logoutForm" th:action="@{/logout}" method="post" >
             <input type="submit" value="Sign Out"/>
         </form>
@@ -67,7 +70,7 @@
             <h1>Projekt IoT!</h1>
         </div>
 
-            <div class="container">
+            <div class="content">
 
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
