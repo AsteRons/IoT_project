@@ -1,4 +1,6 @@
 Skrypty umieszczone w (tym) folderze - PHP_newDB zapewniają pełną obsługę nowej bazy danych. Jest ona zintegrowana z serwerem,
 na którym znajduje się strona internetowa.
 
+# Update: Został również dodany token i jego obsługa do skryptów dodających dane i usuwający je z bazy (21.11.2019)
+
 Wszelkie pytania, problemy i wątpliwości kierować do mnie @MarcinJ7.
