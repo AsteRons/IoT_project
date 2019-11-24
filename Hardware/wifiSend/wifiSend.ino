@@ -1,6 +1,7 @@
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
 #include <Wire.h> 
+#include <EEPROM.h>
 
 #define   WIFI_SSID     "UPCD3BCEBC"                       // Nazwa sieci Wi-Fi, do ktorej nastapi polaczenie
 #define   WIFI_PASS     "sWspstcxamA7"                     // Haslo do niej
@@ -63,7 +64,16 @@ void sendDataToServer(int ntu)
   Serial.println("");
   
   String ntuValue = String(ntu);
-  String php = "/NewServer/addToDB.php?deviceID="+deviceID+"&ntuValue="+ntuValue;
+  String token = "";    // token do wysłania na serwer
+  
+  EEPROM.begin(512);  
+  for(int i=0;i<88;i++) // bit po bicie odczyt z EEPROM tokena o ustalonej dlugosci
+  {
+    token = token + char(EEPROM.read(0+i));  
+  }  
+  EEPROM.end();
+  
+  String php = "/addToDbToken.php?token="+token+"&deviceID="+deviceID+"&ntuValue="+ntuValue;
 
   https.print(String("POST ") + php + " HTTP/1.1\r\n" +
                "Host: " + HOST + "\r\n" +
