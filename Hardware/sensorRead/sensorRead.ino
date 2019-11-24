@@ -39,7 +39,7 @@ void loop() // odczyt danych z czujnika oraz przeliczenie napieca na jednostke N
   }
   else
   {
-    ntuValue=-1120.4*square(voltage)+5742.3*voltage-4353.8; // zgodnie z danymi producenta
+    ntuValue=-1120.4*voltage*voltage+5742.3*voltage-4353.8; // zgodnie z danymi producenta
   }  
   ntuValue = (int)ntuValue;
   Serial.println(ntuValue);
