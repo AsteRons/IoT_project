@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+	<meta charset="ISO-8859-1" />
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   
+  </head>
+  <body>
+    <div class="container">
+		<h2 align="center">Poziom czystosci wody</h2>
+	
+		<div id="container"
+			 style="width: 700px; height: 500px; margin: 0 auto"></div>
+	</div>
+	<script type="text/javascript">
+		google.charts.load('current', {'packages':['gauge']});
+		google.charts.setOnLoadCallback(drawChart);
+  
+		function drawChart() {
+  
+		  var data = google.visualization.arrayToDataTable([
+			['Label', 'Value'],
+			['nTu', 800],
+			
+		  ]);
+  
+		  var options = {
+			width: 650, height: 650,
+			//redFrom: 90, redTo: 100,
+			//yellowFrom:75, yellowTo: 90,
+			max: 4000,
+			minorTicks: 50
+		  };
+  
+		  var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+  
+		  chart.draw(data, options);
+  
+		  setInterval(function() {
+			data.setValue(0, 1, ${tempSensorData.ntuValue});
+			chart.draw(data, options);
+		  }, 1300);
+		}
+	  </script>
+  </body>
+</html>
