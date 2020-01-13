@@ -1,0 +1,6 @@
+com.iotproject.server.iotserver
+com.iotproject.server.iotserver.controller
+com.iotproject.server.iotserver.dao
+com.iotproject.server.iotserver.model
+com.iotproject.server.iotserver.security
+com.iotproject.server.iotserver.service

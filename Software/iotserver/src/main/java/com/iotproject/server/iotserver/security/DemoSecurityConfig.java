@@ -31,6 +31,8 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/sensorData/showMyLoginPage").permitAll()
+                .antMatchers("/sensorData/gaugeSensorData_1").permitAll()
+                .antMatchers("/sensorData/graphSensorData_1").permitAll()
                 .antMatchers("/sensorData/**").hasRole("ADMIN")
                 .antMatchers("/**").hasRole("USER")
                 .anyRequest().authenticated()

@@ -1,13 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8">
     <title>Projekt IoT</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Projekt Internet of Things"/>
     <meta name="keywords" content="IoT"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="author" content="Kruczek"/>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="css/bootstrap-4-navbar.css" rel="stylesheet">
 
@@ -20,7 +21,7 @@
         font-size: 20px;
         }
 
-        tbody
+        h1
         {
             font-size: 40px;
             font-weight: 400;
@@ -90,7 +91,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#"> Download </a>
+                        <!--<a href="https://iotprojectteam.000webhostapp.com/saveToTXT.php" download></a>-->
+                        <a class="nav-link" href="https://iotprojectteam.000webhostapp.com/saveToTXT.php" download="plik.txt"> Download </a>
                     </li>
 
                 </ul>
@@ -109,40 +111,61 @@
         </nav>
 
     </header>
+
     <main>
+
         <section class="content">
+
             <div class="container">
-                <table class="table table-bordered table-striped" style="color: white">
-                    <thead class="thead-light">
 
-                    <tr>
-                        <th>ID</th>
-                        <th>deviceID</th>
-                        <th>ntuValue</th>
-                        <th>timestamp</th>
-                    </tr>
+                <header>
 
-                    </thead>
+                    <h1>Czujnik mętności wody SEN0189</h1>
+                    <p>W tej części prezentujemy możliwośc wybrania sposobu wyświetlenia zebranych danych z czujnika.</p>
 
-                    <tbody>
+                </header>
 
-                    <tr  th:each="tempSensorData : ${sensorData}">
-                        <td th:text="${((tempSensorData.id-1)/10)+1}" />
-                        <td th:text="${tempSensorData.deviceID}" />
-                        <td th:text="${tempSensorData.ntuValue}" />
-                        <td th:text="${tempSensorData.timestamp}" />
-                   </tr>
+                <div class="row">
 
-                   </tbody>
+                    <div class="col-sm-6 col-md-4">
 
-               </table>
-           </div>
-       </section>
-   </main>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-   <script src="js/bootstrap-4-navbar.js"></script>
+                        <figure>
+                            <a href="#"><img src="img/table.png" alt="Tabela"/></a>
+                            <figcaption>Tabela</figcaption>
+                        </figure>
+
+                    </div>
+
+                    <div class="col-sm-6 col-md-4">
+
+                        <figure>
+                            <a href="#"><img src="img/graph.jpg" alt="Wykres"/></a>
+                            <figcaption>Wykres</figcaption>
+                        </figure>
+
+                    </div>
+
+                    <div class="col-sm-6 col-md-4">
+
+                        <figure>
+                            <a href="#"><img src="img/indicator.png" alt="Indicator"/></a>
+                            <figcaption>Wskażnik</figcaption>
+                        </figure>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="js/bootstrap-4-navbar.js"></script>
+
 </body>
 </html>

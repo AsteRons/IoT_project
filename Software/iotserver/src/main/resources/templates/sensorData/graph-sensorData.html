@@ -1,81 +1,179 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="ISO-8859-1" />
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <meta charset="utf-8"/>
+    <title>Projekt IoT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Projekt Internet of Things"/>
+    <meta name="keywords" content="IoT"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="author" content="Kruczek"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="css/bootstrap-4-navbar.css" rel="stylesheet">
 
     <!-- Optional theme -->
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
 
+    <style>
+        body
+        {
+
+        color: #efefef;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 20px;
+        }
+
+        h1
+        {
+            font-size: 40px;
+            font-weight: 400;
+            color: #C0D06F;
+            margin: 20px;
+        }
+
+        .content
+        {
+            text-align: center;
+        }
+
+        .content img
+        {
+            width: 100%;
+            height: auto;
+        }
+
+        .content p
+        {
+            margin-bottom: 30px;
+        }
+
+        .content figcaption
+        {
+            margin-top: 8px;
+        }
+        .navbar
+        {
+            min-height: 57px;
+        }
+
+        .bg-content
+        {
+            background-color: #91a33b !important;
+        }
+    </style>
+
 </head>
 <body>
-<div class="container">
-    <h2 align="center">Poziom czystosci wody</h2>
+    <header>
 
-    <div id="container"
-         style="width: 700px; height: 500px; margin: 0 auto"></div>
-</div>
-<script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <nav class="navbar navbar-dark bg-content navbar-expand-md">
+
+            <a class="navbar-brand" href="#">IoT</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainmenu">
+
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="showMyMainPage"> Start </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Urządzenia
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="list">Tabela</a></li>
+                            <li><a class="dropdown-item" href="graphSensorData_1">Wykres</a></li>
+                            <li><a class="dropdown-item" href="gaugeSensorData_1">Wskaźnik</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#"> Download </a>
+                    </li>
+
+                </ul>
+
+                <form class="form-inline my-2 my-lg-0">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/logout}">Wyloguj</a>
+                    </ul>
+                    </li>
+                </form>
+
+            </div>
+
+        </nav>
+
+    </header>
+    <main>
+        <section class="content">
+            <div class="container">
+                <h1 align="center">Poziom czystosci wody</h1>
+                <div id="container" style="width: 1200px; height: 600px; margin: 0 auto"></div>
+            </div>
+        </section>
+    </main>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <!-- Latest compiled and minified JavaScript -->
-<script
-        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script th:inline="javascript">
-    $(function(){
-        Highcharts.chart('container', {
-            chart: {
-                type: 'line'
-            },
-            title: {
-                text: 'IoT wykres'
-            },
-            subtitle: {
-                text: ' wody'
-            },
-            xAxis: {
-                categories: [[${sensorDataMaps.keySet()}]],
-                crosshair: true
-            },
-            yAxis: {
-                min: 0,
-                max: 3000,
-                title: {
-                    text: 'Czywtosc wody '
-                }
-            },
-            tooltip: {
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} C </b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-            series: [{
-                name: 'Czystosc wody',
-                data: [[${sensorDataMaps.values()}]]
-            }]
-        });
-    });
-</script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="js/bootstrap-4-navbar.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script th:inline="javascript">
+            $(function(){
+                Highcharts.chart('container', {
+                    chart: {
+                        type: 'line'
+                    },
+                    title: {
+                        text: 'IoT wykres'
+                    },
+                    subtitle: {
+                        text: ' wody'
+                    },
+                    xAxis: {
+                        categories: [[${sensorDataMaps.keySet()}]],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        max: 3200,
+                        title: {
+                            text: 'Czystosc wody [NTU]'
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                            '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+                        footerFormat: '</table>',
+                        shared: true,
+                        useHTML: true
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0
+                        }
+                    },
+                    series: [{
+                        name: 'Czystosc wody',
+                        data: [[${sensorDataMaps.values()}]]
 
-
-<form>
-    <button type="submit" formaction="/sensorData/list">
-    Return
-    </button>
-</form>
-
-
+                    }]
+                });
+            });
+        </script>
 </body>
 </html>
