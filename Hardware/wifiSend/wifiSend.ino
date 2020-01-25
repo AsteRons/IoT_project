@@ -3,8 +3,8 @@
 #include <Wire.h> 
 #include <EEPROM.h>
 
-#define   WIFI_SSID     "UPCD3BCEBC"                       // Nazwa sieci Wi-Fi, do ktorej nastapi polaczenie
-#define   WIFI_PASS     "sWspstcxamA7"                     // Haslo do niej
+#define   WIFI_SSID     "NAZWA SIECI"                      // Nazwa sieci Wi-Fi, do ktorej nastapi polaczenie
+#define   WIFI_PASS     "HASLO"                            // Haslo do niej
 #define   HOST          "iotprojectteam.000webhostapp.com" // serwer
 #define   PORT          443                                // port, https = 443, http = 80
 #define   FINGERPRINT   "5B FB D1 D4 49 D3 0F A9 C6 40 03 34 BA E0 24 05 AA D2 E2 01"  // fingerprint SHA-1 strony
