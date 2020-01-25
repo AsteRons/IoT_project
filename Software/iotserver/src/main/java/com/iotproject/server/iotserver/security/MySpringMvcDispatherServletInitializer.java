@@ -2,6 +2,9 @@ package com.iotproject.server.iotserver.security;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+/**
+ * Definiowanie zabezpieczeń serveletu
+ */
 public class MySpringMvcDispatherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 

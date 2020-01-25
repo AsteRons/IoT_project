@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import com.iotproject.server.iotserver.dao.SensorDataRepository;
 import com.iotproject.server.iotserver.model.SensorData;
 
+/**
+ * Implementasja metod do wykonywania iperasji na danych wbazie
+ */
 @Service
 public class SensorDataServiceImpl implements SensorDataService{
 
@@ -19,11 +22,20 @@ public class SensorDataServiceImpl implements SensorDataService{
         sensorDataRepository = theSensorDataRepository;
     }
 
+    /**
+     * Pobiera  wszystkie obiekty z bazy i zapisuje je do List
+     * @return - zwraca liste wszystkich  obiektów z bazy
+     */
     @Override
     public List<SensorData> findAll() {
         return sensorDataRepository.findAllByOrderByIdAsc();
     }
 
+    /**
+     * Pobiera obiekt z bazy o określonym Id
+     * @param theId - id poszukiwanego obiektu
+     * @return - zwraca znaleziony obiekt
+     */
     @Override
     public SensorData findById(int theId) {
         Optional<SensorData> result = sensorDataRepository.findById(theId);
@@ -40,11 +52,19 @@ public class SensorDataServiceImpl implements SensorDataService{
         return theSensorData;
     }
 
+    /**
+     * Zapisuje obiekt do bazy danych
+     * @param theSensorData  obiekt danych do zapisu
+     */
     @Override
     public void save(SensorData theSensorData) {
         sensorDataRepository.save(theSensorData);
     }
 
+    /**
+     * Usuwa z bazy danych obiekt o okreslonym Id
+     * @param theId  Id obiektu który ma być usunięty z bazy
+     */
     @Override
     public void deleteById(int theId) {
         sensorDataRepository.deleteById(theId);

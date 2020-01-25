@@ -8,13 +8,20 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 
-
+/**
+ * Konfiguracja zabezpieczeń
+ */
 @Configuration
 @EnableWebSecurity
 public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-
+    /**
+     * Implementacja definiowania przykłądowych użytkowników
+     * Ustawianie dla nich haseł, nazw oraz roli
+     * @param auth - obiekt użytkownika
+     *
+     */
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
 
@@ -26,13 +33,18 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
+    /**
+     * Konfiguracja zabezpieczeń naszej strony www.
+     * Po wiecej informasji odsyła do dokumentacji Spring Security
+     * @param http
+     *
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/sensorData/showMyLoginPage").permitAll()
-                .antMatchers("/sensorData/gaugeSensorData_1").permitAll()
-                .antMatchers("/sensorData/graphSensorData_1").permitAll()
+
                 .antMatchers("/sensorData/**").hasRole("ADMIN")
                 .antMatchers("/**").hasRole("USER")
                 .anyRequest().authenticated()

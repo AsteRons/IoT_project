@@ -15,14 +15,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-
+/**
+ * Klasa do implementacji logiki serwera
+ */
 @Controller
 @RequestMapping("/sensorData")
 public class SensorDataController {
 
-
+    /**
+     * Implementacja serwisu do wykonywania operacji  na danych z bazy
+     */
     private SensorDataService sensorDataService;
 
+    /**
+     * Domyślny konstruktor klasy SensorDataController
+     * @param theSensorDataService  serwisu do wykonywania operacji  na danych z bazy
+     */
     // load sensorData data
     public SensorDataController(SensorDataService theSensorDataService) {
         sensorDataService = theSensorDataService;
@@ -30,6 +38,11 @@ public class SensorDataController {
 
     // add mapping for "/list"
 
+    /**
+     *  Implementacja logiki dla strony html z tabelą
+     * @param theModel  pobiera dane aby były widoczne na stronie html
+     * @return  zwraca strone html z tabelą danych
+     */
     @RequestMapping("/list")
     public String listSensorData(Model theModel){
 
@@ -38,6 +51,11 @@ public class SensorDataController {
         return "sensorData/list-sensorData";
     }
 
+    /**
+     * Implementacja logiki dla strony html z wskaźnikiem
+     * @param theModel  pobiera dane aby były widoczne na stronie html
+     * @return  zwraca strone html z wskaźnikiem
+     */
     @GetMapping("/gaugeSensorData_1")
     public String graphSensorDataPointer(Model theModel){
         List<SensorData> theSensorDataPointer = sensorDataService.findAll();
@@ -48,7 +66,11 @@ public class SensorDataController {
         return "sensorData/gauge-sensorData";
     }
 
-
+    /**
+     * Implementacja logiki dla wykresu
+     * @param theModel  pobiera dane aby były widoczne na stronie html
+     * @return  zwraca strone html z wykresem
+     */
     @GetMapping("/graphSensorData_1")
     public String graphSensorData(Model theModel){
 
@@ -63,6 +85,10 @@ public class SensorDataController {
         return "sensorData/graph-sensorData";
     }
 
+    /**
+     * Implementacja logiki logowania
+     * @return  zwraca strone html z logowaniem
+     */
     @GetMapping("/showMyLoginPage")
     public String showMyLoginPage() {
 
@@ -70,6 +96,10 @@ public class SensorDataController {
 
     }
 
+    /**
+     * Implementacja logiki strony głównej
+     * @return  zwraca strone html z strony głównej
+     */
     @RequestMapping("/showMyMainPage")
     public String showMyMainPage() {
 
